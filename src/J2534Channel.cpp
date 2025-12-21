@@ -66,7 +66,7 @@ namespace j2534 {
         std::vector<PASSTHRU_MSG> messages;
         unsigned long numMsg = 0;
         numMsgs = 0;
-        for (auto& passMsg : msg.toPassThruMsgs(_protocolId, _txFlags)) {
+        for (const auto& passMsg : msg.toPassThruMsgs(_protocolId, _txFlags)) {
             J2534_ERROR_CODE errorCode = _j2534.PassThruWriteMsgs(_channelID, {passMsg}, numMsg, Timeout);
             if(errorCode != STATUS_NOERROR) {
                 return errorCode;
